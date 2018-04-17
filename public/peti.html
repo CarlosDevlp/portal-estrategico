@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0 maxmum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+      <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js?ver=4.9.2'></script>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+
+	<title>Andamios y Toldos Canada </title>
+  <script src="https://polygit.org/components/webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="./componentes/nav-bar.html?v=0.1">
+  <link rel="import" href="./componentes/creditos-footer.html">
+  <style type="text/css">
+    th{
+        background:black;
+        color:white;
+      }
+
+  </style>
+</head>
+<body>
+      <div class="contenedor">
+      	<nav-bar></nav-bar>
+
+      	<section id="peti" class="main" style="width: 100%">
+      		<!--<div class="imagen">
+      			<img src="imag/sistemas.jpg" alt="">
+      			
+      		</div>-->
+      		<section class="posts">
+      			<article>
+      				<h2>PETI</h2>
+
+                              <form>
+                                    
+
+                                    <br>
+                                    <br>
+                                    <br>
+
+                                    <!--muestra una lista de soluciones para alcanzar dicho objetivo-->
+                                    
+                                    <table class="table table-bordered">
+                                          <thead>
+                                                <tr>
+                                                      <th>Matriz de estrategias</th>
+                                                      <th v-for="solucion in soluciones" v-text="solucion"></th>
+                                                </tr>
+
+                                          </thead>
+                                          <tbody>
+                                                <tr>
+                                                   <td><!--seleccione un objetivo-->
+                                                      <select style="width: 200px" v-model="seleccionado.objetivo">
+                                                            <option value="-1">Seleccione objetivo estratégico</option>
+                                                            <option v-for="objetivo in objetivos" :value="objetivo" v-text="objetivo.nombre"></option>
+                                                      </select>
+                                                  </td> 
+
+                                                  <td v-for="solucion in soluciones" >
+                                                        <span v-for="solucionSeleccionada in seleccionado.objetivo.soluciones"
+                                                        v-if="solucion==solucionSeleccionada"><img src="./imag/check.svg" width="25"></span>
+                                                  </td>
+
+
+                                                </tr>
+                                          </tbody>
+                                          
+                                    </table>
+
+                              </form>
+
+      				
+      			</article>
+      			
+      		</section>
+      		
+      	</section>
+
+      	<!--<aside>
+      		<div class="widget">
+      			<h3 class="titulo">Articulos Destacados</h3>
+      			<ul>
+      				<li><a href="">un sistema es el conjunto de procesos internos.</a></li>
+      				<li><a href="">un sistema es el conjunto de procesos internos.</a></li>
+      				<li><a href="">un sistema es el conjunto de procesos internos.</a></li>
+      				<li><a href="">un sistema es el conjunto de procesos internos.</a></li>
+      			</ul>
+      		</div>
+      		<div class="widget">
+      			<h3 class="titulo">Information</h3>
+      			<p>Un sistema (del latín systēma, y este del griego σύστημα sýstēma 'reunión, conjunto, agregado') es un conjunto de componentes que se relacionan con al menos algún otro componente; puede ser material o conceptual.1​ Todos los sistemas tienen composición, estructura y entorno, pero solo los sistemas materiales tienen mecanismo, y solo algunos sistemas materiales tienen figura (forma).</p>
+      		</div>
+      	</aside>-->
+
+      	<creditos-footer></creditos-footer>
+
+            <script type="text/javascript">
+                  (function(){
+                        //Vista-modelo
+                        var vm = new Vue({
+                               el: "#peti",
+                               data:{
+                                    seleccionado:{
+                                          objetivo:'-1'
+                                    },
+                                    soluciones:[
+                                          "Inteligencia de negocio (Datamart)",
+                                          "Desarrollo de una página web informativa (landing page) ",
+                                          "Web con carrito de compras E- Business E-commerce",
+                                          "Campañas de publicidad (Adwords, Facebook),Facebook Chat bot, SEO",
+                                          "CRM",
+                                          "Aplicación Android/IOs de consultas para clientes. ",
+                                          "ERP"
+                                    ],
+                                    objetivos:[
+                                          {
+                                            nombre:'Incrementar la calidad del servicio para nuestros clientes.',
+                                            soluciones:[
+                                                'Web con carrito de compras E- Business E-commerce',
+                                                'CRM'
+                                            ]
+                                          },
+                                          {
+                                            nombre:'Optimizar y agilizar la generación de cotización',
+                                            soluciones:[
+                                                'Inteligencia de negocio (Datamart)',
+                                                'Web con carrito de compras E- Business E-commerce',
+                                                'Aplicación Android/IOs de consultas para clientes. '
+                                            ]
+                                          },
+                                          {
+                                            nombre:'Agilizar la atención de las consultas por parte del cliente para la mejora del servicio',
+                                            soluciones:[
+                                                'Inteligencia de negocio (Datamart)',
+                                                'Web con carrito de compras E- Business E-commerce',
+                                                'Aplicación Android/IOs de consultas para clientes. '
+                                            ]
+                                          },
+                                          {
+                                            nombre:'Proporcionar información del servicio rápido y concreto a los clientes.',
+                                            soluciones:[
+                                                'Inteligencia de negocio (Datamart)',
+                                                'Desarrollo de una página web informativa (landing page) ',
+                                                'Campañas de publicidad (Adwords, Facebook),Facebook Chat bot, SEO'
+                                            ]
+                                          },
+                                          {
+                                            nombre:'Posicionamiento del servicio en el mercado.',
+                                            soluciones:[
+                                                'Desarrollo de una página web informativa (landing page) ',
+                                                'Campañas de publicidad (Adwords, Facebook),Facebook Chat bot, SEO'
+                                            ]
+                                          },
+                                          {
+                                            nombre:'Gestionar los pedidos a los proveedores',
+                                            soluciones:[
+                                               'Inteligencia de negocio (Datamart)',
+                                               'ERP' 
+                                            ]
+                                          },
+
+                                    ]
+                               }
+                         
+                               
+                         }) 
+
+                  })();
+            </script>
+
+      </div>
+
+</body>
+</html>

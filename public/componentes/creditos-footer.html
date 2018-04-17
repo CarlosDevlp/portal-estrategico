@@ -1,0 +1,32 @@
+<link rel="import"  href="https://polygit.org/components/polymer/polymer-element.html">
+
+<dom-module id="creditos-footer">
+  <template>
+	  <style>
+	  	:host{
+	  		background: #000;
+	  	}
+	  	
+		footer {
+			width: 100%;
+			clear: both;
+			background: #000;
+			color: #fff;
+			padding: 15px 0;
+			text-align: center;
+		}
+
+	  </style>
+	  <footer>
+		<p>2016 Los derechos reservados, Ronald</p>
+	  </footer>
+  </template>
+
+  <script>
+    class CreditosFooter extends Polymer.Element {
+      static get is() { return "creditos-footer"; }
+    }
+    customElements.define(CreditosFooter.is, CreditosFooter);
+  </script>
+
+</dom-module>

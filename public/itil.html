@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0 maxmum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+      <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js?ver=4.9.2'></script>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+
+	<title>Andamios y Toldos Canada </title>
+  <script src="https://polygit.org/components/webcomponentsjs/webcomponents-loader.js"></script>
+  <link rel="import" href="./componentes/nav-bar.html?v=0.1">
+  <link rel="import" href="./componentes/creditos-footer.html">
+
+  <style type="text/css">
+      .cabeceras1 th{
+        background:black;
+        color:white;
+      }
+
+      .cabeceras2 th{
+        background:gray;
+      }
+
+      td{
+        padding: 0;
+      }
+
+      ol {
+        list-style-type: none;
+      }
+
+      li{
+        
+      }
+
+      .bottom-bordered{
+        border-bottom:1px solid #ddd;
+      }
+
+      .bottom-left-bordered{
+        border-left:1px solid #ddd;
+        border-bottom:1px solid #ddd;
+      }
+
+      .flex-row{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .flex-row > div{
+        flex: 1;
+      }
+
+      .flex-row > div:last-child{
+          text-align:right;
+      }
+
+      .flex-row:hover{
+        background:yellow;
+      }
+
+      td.no-space{
+        padding: 0 !important;
+      }
+
+      .colorable tr:hover{
+       background:yellow; 
+      }
+  </style>
+</head>
+<body>
+      <div class="contenedor">
+      	<nav-bar></nav-bar>
+
+      	<section id="itil" class="main" style="width: 100%">
+      		<!--<div class="imagen">
+      			<img src="imag/sistemas.jpg" alt="">
+      			
+      		</div>-->
+      		<section class="posts">
+      			<article>
+      				<h2>ITIL</h2>
+
+                              <form>
+                                    
+
+                                    <br>
+                                    <br>
+                                    <br>
+
+                                    <!--muestra una lista de soluciones para alcanzar dicho objetivo-->
+                                    
+                                    <table class="table table-bordered">
+                                          <!--encabezado-->
+                                          <thead>
+                                                <tr class="cabeceras1">
+                                                      <th rowspan="2">Objetivo Estratégico</th>
+                                                      <th colspan="2">Alineación estratégica u objetivos de T.I</th>
+                                                      <th>Entrega de valor</th>
+                                                      <th>Servicios de valor</th>
+                                                      <th>Recursos</th>
+                                                </tr>
+                                                <tr class="cabeceras2">
+                                                      <th>Meta/Objetivo</th>
+                                                      <th>Tecnología</th>
+                                                      <th>
+                                                          Dinero/
+                                                          Tiempo/
+                                                          RR.HH/
+                                                          Otros
+                                                      </th>
+                                                      <th></th>
+                                                      <th>Puede incluir varios recursos para un O.E</th>
+                                                </tr>
+                                          </thead>
+
+                                          <!--cuerpo-->
+                                          <tbody>
+                                              <tr>
+                                                <td>
+                                                  <!--seleccione un objetivo estratégico-->
+                                                  <select style="width: 200px" v-model="seleccionado.objetivoEstrategico">
+                                                        <option value="-1">Seleccione objetivo estratégico</option>
+                                                        <option v-for="objetivoEstrategico in objetivosEstrategicos" 
+                                                        :value="objetivoEstrategico" 
+                                                        v-text="objetivoEstrategico.nombre"></option>
+                                                  </select>
+                                                </td>
+                                                
+                                                <td colspan="4" class="colorable no-space">
+                                                  <table class="table table-bordered">
+                                                    <tr v-for="(objetivoTI,index) in seleccionado.objetivoEstrategico.objetivosTI">
+                                                      <!--Objetivos de TI-->
+                                                        <!--metas-->
+                                                      <td>{{objetivoTI.meta}}</td>
+                                                        <!--tecnologias-->
+                                                      <td>{{objetivoTI.tecnologia}}</td>
+                                                      <!--entrega de valor-->
+                                                      <td>{{seleccionado.objetivoEstrategico.entregaValores[index]}}</td>
+                                                      <!--servicios de ti-->
+                                                      <td>{{seleccionado.objetivoEstrategico.serviciosTI[index]}}</td>
+                                                    </tr>
+                                                  </table>
+                                                </td>
+
+                                                  <!--recursos-->
+                                                <td>
+                                                  <ol>
+                                                    <li v-for="recurso in seleccionado.objetivoEstrategico.recursos"
+                                                    class="border-bottom"
+                                                    >
+                                                      {{recurso}}
+                                                    </li>
+                                                  </ol>
+                                                </td>
+                                              </tr>
+
+                                              
+                                          </tbody>
+                                          
+                                    </table>
+
+                              </form>
+
+      				
+      			</article>
+      			
+      		</section>
+      		
+      	</section>
+
+      	<creditos-footer></creditos-footer>
+            <script type="text/javascript">
+                  (function(){
+                        //Vista-modelo
+                        var vm = new Vue({
+                               el: "#itil",
+                               data:{
+                                    seleccionado:{
+                                          objetivoEstrategico:'-1'
+                                    },
+                                    objetivosEstrategicos:[
+                                          {
+                                            nombre:'Incrementar la calidad del servicio para nuestros clientes.',
+                                            objetivosTI:[
+                                                {
+                                                  meta:'Realizar encuestas de satisfaccion',
+                                                  verbo:'utilizando',
+                                                  tecnologia:'aplicativos CRM'
+                                                }
+                                                ,{
+                                                  meta:'Mejorar la calidad de la atencion',
+                                                  verbo:'incrementando',
+                                                  tecnologia:'un sistema web de respuesta'
+                                                },{
+                                                  meta:'Controlar la eficiencia de los trabajadores que brinden la atencion',
+                                                  verbo:'adquiriendo',
+                                                  tecnologia:'un sistema web de monitoreo'
+                                                }                                                  
+                                            ],
+                                            entregaValores:[
+                                                'Realizando encuentas nos beneficiamos en el tiempo para ver los gustos del cliente',
+                                                'Nos beneficiamos en disminuir la atencion al cliente',
+                                                'Nos beneficiamos en disminuir la atencion al cliente'
+                                            ],
+                                            serviciosTI:[
+                                                'Aplicativo CRM',
+                                                'Sistema Web',
+                                                'Sistema Web de Monitoreo'
+                                            ],
+                                            recursos:[
+                                                'CRM',
+                                                'ERP',
+                                                'FONAFE'
+                                            ]
+                                                
+                                          },{
+                                            nombre:"Optimizar y agilizar la generación de cotización" ,
+                                             objetivosTI:[ 
+                                                  {
+                                                    meta:"Gestionar los pedidos",
+                                                    verbo:"implementando",
+                                                    tecnologia:"un aplicativo movil"
+                                                  },
+                                                  {
+                                                    meta:"Brindar ayuda para realizar los pedidos",
+                                                    verbo:"utilizando",
+                                                    tecnologia:"un aplicativo movil"
+                                                  },
+                                                  {
+                                                    meta:"Generar reportes de cotizacion",
+                                                    verbo:"utilizando",
+                                                    tecnologia:"sistema de reportes"
+                                                  }
+                                             ],
+                                             entregaValores:[
+                                                'Disminuimos el tiempo de respuesta al cliente',
+                                                'Mayor agilidad y satisfaccion, acogiendo más a nuevos cliente',
+                                                'Dismunuimos costos adicionales'
+                                             ],
+                                             serviciosTI:[
+                                                'Aplicativo Movil',
+                                                'Aplicativo Movil',
+                                                'Sistema de Reportes'
+                                             ],
+                                             recursos:[
+                                                '',
+                                                '',
+                                                ''
+                                             ]
+
+                                          }
+                                    ]
+                               }
+                         
+                               
+                         }) 
+
+                  })();
+            </script>
+
+      </div>
+
+</body>
+</html>
